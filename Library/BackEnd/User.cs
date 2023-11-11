@@ -12,6 +12,7 @@ namespace Library.BackEnd
 	{
 		public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public int BirthDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public string Email { get; set; }
 
 		public void PrintToDisplay()
 		{
