@@ -19,7 +19,7 @@ namespace Library.BackEnd
 			throw new NotImplementedException();
 		}
 
-		public void RemoveBook(Book book)
+		public bool RemoveBook(Book book)
 		{
 			throw new NotImplementedException();
 		}

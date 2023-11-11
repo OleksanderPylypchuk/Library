@@ -7,8 +7,14 @@ using Library.BackEnd.Interfaces;
 
 namespace Library.BackEnd
 {
-	public class Library : IBookList,IPrintable
+	public class BookLibrary : IBookList,IPrintable
 	{
+		public List<Book> books;
+		public BookLibrary()
+		{
+			//books= new List<Book>();
+			throw new NotImplementedException();
+		}
 		public void AddBook(Book book)
 		{
 			throw new NotImplementedException();
@@ -24,7 +30,7 @@ namespace Library.BackEnd
 			throw new NotImplementedException();
 		}
 
-		public void RemoveBook(Book book)
+		public bool RemoveBook(Book book)
 		{
 			throw new NotImplementedException();
 		}

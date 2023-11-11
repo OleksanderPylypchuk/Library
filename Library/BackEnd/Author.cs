@@ -11,12 +11,13 @@ namespace Library.BackEnd
 	{
 		public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public int BirthDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public int? DeathDate { get; set; }
+		private int? DeathDate { get; set; }
 		public Author(string name, int birthDate, int? deathDate)
 		{
-			Name = name;
-			BirthDate = birthDate;
-			DeathDate = deathDate;
+			//Name = name;
+			//BirthDate = birthDate;
+			//DeathDate = deathDate;
+			throw new NotImplementedException();
 		}
 		public Author(string name, int birthDate):this(name, birthDate, null)
 		{ 

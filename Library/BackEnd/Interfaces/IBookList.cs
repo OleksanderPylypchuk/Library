@@ -9,7 +9,7 @@ namespace Library.BackEnd.Interfaces
 	public interface IBookList
 	{
 		public void AddBook(Book book);
-		public void RemoveBook(Book book);
+		public bool RemoveBook(Book book);
 		public Book Find(string title);
 	}
 }

@@ -13,7 +13,22 @@ namespace Library.BackEnd
 		public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public int BirthDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public string Email { get; set; }
-
+		public BorrowedBookList list;
+		public User(string name, int birthDate, string email)
+		{
+			//Name = name;
+			//BirthDate = birthDate;
+			//Email = email;
+			throw new NotImplementedException();
+		}	
+		public void TakeBook(string title)
+		{
+			throw new NotImplementedException();
+		}
+		public void ReturnBook(string title)
+		{ 
+			throw new NotImplementedException(); 
+		}
 		public void PrintToDisplay()
 		{
 			throw new NotImplementedException();

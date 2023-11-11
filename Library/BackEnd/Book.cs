@@ -15,11 +15,12 @@ namespace Library.BackEnd
 		Author Author { get; set; }
 		public Book(string title, int date, Author author)
 		{
-			if (date < author.BirthDate)
-				throw new Exception("Книга написана не автором");
-			Title = title;
-			PublishDate = date;
-			Author = author;
+			//if (date < author.BirthDate)
+			//	throw new Exception("Книга написана не автором");
+			//Title = title;
+			//PublishDate = date;
+			//Author = author;
+			throw new NotImplementedException();
 		}
 
 		public void PrintToDisplay()
