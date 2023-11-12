@@ -23,7 +23,7 @@ namespace Library.BackEnd
 			}
 		}
 		public int? DeathDate { get { return _deathDate; }
-			set {if (value < _birthDate)
+			set {if (value <= _birthDate)
 					throw new Exception("Неможлива дата смерті");
 			_deathDate = value;
 			} }

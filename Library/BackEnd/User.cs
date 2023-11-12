@@ -57,6 +57,7 @@ namespace Library.BackEnd
 		{
 			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nВзяті книги:";
 			info += list.RetriveBookNames();
+			Console.WriteLine(info);
 		}
 	}
 }
