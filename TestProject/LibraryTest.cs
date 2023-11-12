@@ -44,38 +44,17 @@ namespace TestProject
 		public void TestRemoveBookNonExistent()
 		{
 			BookLibrary bookLibrary = new BookLibrary();
-			Exception exception = null;
-
-			try
-			{
-				if (!bookLibrary.RemoveBook(new Book("something", 1999, new Author("someone", 1988))))
-					throw new Exception();
-			}
-			catch (Exception ex)
-			{
-				exception = ex;
-			}
-
-			Assert.IsNull(exception);
+			
+			Assert.IsFalse(bookLibrary.RemoveBook(new Book("something", 1999, new Author("someone", 1988))));
 		}
 		[TestMethod]
 		public void TestRemoveBookExistent()
 		{
 			BookLibrary bookLibrary = new BookLibrary();
-			bookLibrary.AddBook(new Book("something", 1999, new Author("someone", 1988)));
-			Exception exception = null;
+			Book book = new Book("something", 1999, new Author("someone", 1988));
+			bookLibrary.AddBook(book);
 
-			try
-			{
-				if (!bookLibrary.RemoveBook(new Book("something", 1999, new Author("someone", 1988))))
-					throw new Exception();
-			}
-			catch (Exception ex)
-			{
-				exception = ex;
-			}
-
-			Assert.IsNull(exception);
+			Assert.IsTrue(bookLibrary.RemoveBook(book));
 		}
 		[TestMethod]
 		public void TestFindBookWrongName()

@@ -33,10 +33,10 @@ namespace TestProject
 			}
 			catch
 			{
-				Assert.Fail();
+				Assert.IsTrue(true);
+				return;
 			}
-
-			Assert.IsTrue(true);
+			Assert.Fail();
 		}
 		[TestMethod]
 		public void TestPrint()

@@ -15,17 +15,16 @@ namespace Library.BackEnd
 		Author Author { get; set; }
 		public Book(string title, int date, Author author)
 		{
-			//if (date < author.BirthDate)
-			//	throw new Exception("Книга написана не автором");
-			//Title = title;
-			//PublishDate = date;
-			//Author = author;
-			throw new NotImplementedException();
+			if (date < author.BirthDate||(author.DeathDate!=null&&date>author.DeathDate))
+				throw new Exception("Книга написана не автором");
+			Title = title;
+			PublishDate = date;
+			Author = author;
 		}
 
 		public void PrintToDisplay()
 		{
-			throw new NotImplementedException();
+			Console.WriteLine($"Назва: {Title}\nДата написання: {PublishDate}\nАвтор: {Author.Name}");
 		}
 	}
 }

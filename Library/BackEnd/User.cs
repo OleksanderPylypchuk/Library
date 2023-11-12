@@ -10,28 +10,53 @@ namespace Library.BackEnd
 {
 	public class User : IPeople, IPrintable
 	{
-		public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public int BirthDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		private string _name;
+		private string _email;
+		private int _birthDate;
+		public string Name { get { return _name; }
+			set
+			{
+				if (string.IsNullOrEmpty(value) || (value.Length < 3 || value.Length > 20))
+					throw new Exception("Неможливе ім'я");
+				_name = value;
+			}
+		}
+
+		public int BirthDate { get => _birthDate;
+			set
+			{
+				if (value > 2010)
+					throw new Exception("Неможливий вік користувача");
+				_birthDate = value;
+			}
+		}
+
 		public string Email { get; set; }
 		public BorrowedBookList list;
 		public User(string name, int birthDate, string email)
 		{
-			//Name = name;
-			//BirthDate = birthDate;
-			//Email = email;
-			throw new NotImplementedException();
+			Name = name;
+			BirthDate = birthDate;
+			Email = email;
+			list = new BorrowedBookList();
 		}	
-		public void TakeBook(string title)
+		public void TakeBook(Book book)
 		{
-			throw new NotImplementedException();
+			list.AddBook(book);
 		}
-		public void ReturnBook(string title)
-		{ 
-			throw new NotImplementedException(); 
+		public Book ReturnBook(string title)
+		{
+			Book book = list.Find(title); 
+			if(book!=null)
+			{
+				list.RemoveBook(book);
+			}
+			return book;
 		}
 		public void PrintToDisplay()
 		{
-			throw new NotImplementedException();
+			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nВзяті книги:";
+			info += list.RetriveBookNames();
 		}
 	}
 }

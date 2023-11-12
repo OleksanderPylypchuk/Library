@@ -12,27 +12,35 @@ namespace Library.BackEnd
 		public List<Book> books;
 		public BookLibrary()
 		{
-			//books= new List<Book>();
-			throw new NotImplementedException();
+			books = new List<Book>();
 		}
 		public void AddBook(Book book)
 		{
-			throw new NotImplementedException();
+			books.Add(book);
 		}
 
 		public Book Find(string title)
 		{
-			throw new NotImplementedException();
+			foreach (Book book in books)
+			{
+				if (book.Title == title) return book;
+			}
+			return null;
 		}
 
 		public void PrintToDisplay()
 		{
-			throw new NotImplementedException();
+			string text = "Книги у бібліотеці:";
+			foreach (Book book in books)
+			{
+				text += book.Title;
+			}
+			Console.WriteLine(text);
 		}
 
 		public bool RemoveBook(Book book)
 		{
-			throw new NotImplementedException();
+			return books.Remove(book);
 		}
 	}
 }

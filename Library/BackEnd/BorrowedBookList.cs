@@ -9,19 +9,37 @@ namespace Library.BackEnd
 {
 	public class BorrowedBookList : IBookList
 	{
+		List<Book> books;
+		public BorrowedBookList()
+		{ 
+			books = new List<Book>();
+		}
 		public void AddBook(Book book)
 		{
-			throw new NotImplementedException();
+			books.Add(book);
 		}
 
 		public Book Find(string title)
 		{
-			throw new NotImplementedException();
+			foreach (Book book in books)
+			{
+				if (book.Title == title) return book;
+			}
+			return null;
 		}
 
 		public bool RemoveBook(Book book)
 		{
-			throw new NotImplementedException();
+			return books.Remove(book);
+		}
+		public string RetriveBookNames()
+		{
+			string result = "";
+			foreach(Book book in books)
+			{
+				result += book.Title + "\n";
+			}
+			return result;
 		}
 	}
 }

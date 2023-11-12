@@ -20,7 +20,6 @@ namespace TestProject
 			{
 				new Author(name, birth);
 			}
-			catch (NotImplementedException exc) { }
 			catch (Exception exc)
 			{
 				ex = exc;
@@ -38,7 +37,6 @@ namespace TestProject
 			{
 				new Author(name, birth, death);
 			}
-			catch (NotImplementedException exc) { }
 			catch (Exception exc)
 			{
 				ex = exc;
@@ -63,6 +61,7 @@ namespace TestProject
 
 			Assert.IsNull(ex);
 		}
+		[TestMethod]
 		public void ConstructorTestWithoutDeath()
 		{
 			string name = "Some Dude"; int birth = 1999;

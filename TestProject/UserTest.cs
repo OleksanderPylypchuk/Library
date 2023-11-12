@@ -39,30 +39,15 @@ namespace TestProject
 			Assert.IsNull(exception);
 		}
 		[TestMethod]
-		public void TestTakeBookWrongTitle()
-		{
-			string title = "non existent";
-			User user = new User("Name", 1998, "damls@gmail.com");
-			Exception exception = null;
-
-			try
-			{
-				user.TakeBook(title);
-			}
-			catch (NotImplementedException ex) { }
-			catch (Exception ex) { exception = ex; };
-
-			Assert.IsNotNull(exception);
-		}
-		[TestMethod]
 		public void TestTakeBook()
 		{
 			string title = "existent";
 			User user = new User("Name", 1998, "damls@gmail.com");
+			Book book = new Book("something", 1999, new Author("someone", 1988));
 			Exception exception = null;
 			try
 			{
-				user.TakeBook(title);
+				user.TakeBook(book);
 			}
 			catch (Exception ex) { exception = ex; };
 
@@ -74,14 +59,8 @@ namespace TestProject
 			string title = "non existent";
 			User user = new User("Name", 1998, "damls@gmail.com");
 			Exception exception = null;
-			try
-			{
-				user.ReturnBook(title);
-			}
-			catch (NotImplementedException ex) { }
-			catch (Exception ex) { exception = ex; };
-
-			Assert.IsNotNull(exception);
+			
+			Assert.IsFalse(user.ReturnBook(title)!=null);
 		}
 		[TestMethod]
 		public void TestPrintInfo()
@@ -94,7 +73,27 @@ namespace TestProject
 			}
 			catch (Exception ex) { exception = ex; };
 
-			Assert.IsNotNull(exception);
+			Assert.IsNull(exception);
+		}
+		[TestMethod]
+		public void TestReturnBookWrongName()
+		{
+			User user = new User("Name", 1998, "damls@gmail.com");
+
+			Book book=user.ReturnBook("");
+
+			Assert.IsNull (book);
+		}
+		[TestMethod]
+		public void TestReturnBookRightName()
+		{
+			User user = new User("Name", 1998, "damls@gmail.com");
+			Book book = new Book("something", 1999, new Author("someone", 1988));
+			user.TakeBook(book);
+
+			book = user.ReturnBook("something");
+
+			Assert.IsNotNull(book);
 		}
 	}
 }
