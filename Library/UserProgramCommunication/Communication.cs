@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.BackEnd;
+using Library.BackEnd.Abstract;
 
 namespace Library.UserProgramCommunication
 {
 	public class Communication
 	{
-		public BookLibrary library;
+		public BookList library;
 		public List<User> users;
 		public List<Author> authors;
 		public User currentuser=null;
@@ -51,13 +52,16 @@ namespace Library.UserProgramCommunication
 		{
 			try
 			{
-				Console.WriteLine("Виберіть опцію:\n1 - Додати книгу\n2 - Викинути книгу");
+				Console.WriteLine("Виберіть опцію:\n1 - Додати книгу\n2 - Передрукувати існуючу книгу\n3 - Викинути книгу");
 				switch (Console.ReadLine())
 				{
 					case "1":
 						AddBook();
 						break;
 					case "2":
+						AddBook(1);
+						break;
+					case "3":
 						TrashBook();
 						break;
 					default:
@@ -91,6 +95,23 @@ namespace Library.UserProgramCommunication
 				ReturnToOptions();
 			}
 			catch(Exception e)
+			{
+				ReturnToOptions();
+			}
+		}
+		public void AddBook(int i)
+		{
+			try
+			{
+				Console.WriteLine("Введіть назву книги");
+				string title = Console.ReadLine();
+				Book bookToClone = library.Find(title);
+				Book bookToAdd = (Book)bookToClone.Clone();
+				library.AddBook(bookToAdd);
+				Console.WriteLine("Клоновано книгу!");
+				ReturnToOptions();
+			}
+			catch (Exception e)
 			{
 				ReturnToOptions();
 			}
@@ -159,12 +180,14 @@ namespace Library.UserProgramCommunication
 				{
 					case "1":
 						Console.WriteLine("Введіть ім'я користувача");
-						string title = Console.ReadLine();
+						string name = Console.ReadLine();
 						Console.WriteLine("Введіть дату народження");
 						int birthdate = int.Parse(Console.ReadLine());
 						Console.WriteLine("Введіть email адресу");
 						string email = Console.ReadLine();
-						users.Add(new User(title, birthdate, email));
+						if (birthdate > 2010)
+							users.Add(new YoungUser(name, birthdate, email));
+						else users.Add(new User(name, birthdate, email));
 						Console.WriteLine("Створено користувача!");
 						break;
 					case "2":
@@ -234,7 +257,7 @@ namespace Library.UserProgramCommunication
 		}
 		public void SeeBooksInLibrary()
 		{
-			library.PrintToDisplay();
+			Console.WriteLine(library.RetrieveBookNames());
 			ReturnToOptions();
 		}
 		public void ReturnToOptions()

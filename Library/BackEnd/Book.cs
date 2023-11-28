@@ -7,7 +7,7 @@ using Library.BackEnd.Interfaces;
 
 namespace Library.BackEnd
 {
-	public class Book : IPrintable
+	public class Book : IPrintable, ICloneable
 	{
 		private string _title;
 		public string Title { get { return _title; } set { if (value == "") throw new Exception("Пуста назва"); _title = value; } }
@@ -25,6 +25,10 @@ namespace Library.BackEnd
 		public void PrintToDisplay()
 		{
 			Console.WriteLine($"Назва: {Title}\nДата написання: {PublishDate}\nАвтор: {Author.Name}");
+		}
+		public object Clone()
+		{
+			return new Book(Title, PublishDate, Author);
 		}
 	}
 }

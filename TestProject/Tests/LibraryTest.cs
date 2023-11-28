@@ -99,7 +99,7 @@ namespace TestProject.Tests
 
             try
             {
-                bookLibrary.PrintToDisplay();
+                bookLibrary.RetrieveBookNames();
             }
             catch (Exception ex)
             {

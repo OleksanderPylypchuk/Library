@@ -13,6 +13,8 @@ namespace Library.BackEnd
 		private string _name;
 		private string _email;
 		private int _birthDate;
+		public string Email { get; set; }
+		public BorrowedBookList list;
 		public string Name { get { return _name; }
 			set
 			{
@@ -21,18 +23,12 @@ namespace Library.BackEnd
 				_name = value;
 			}
 		}
-
-		public int BirthDate { get => _birthDate;
+		public virtual int BirthDate { get => _birthDate;
 			set
 			{
-				if (value > 2010)
-					throw new Exception("Неможливий вік користувача");
 				_birthDate = value;
 			}
 		}
-
-		public string Email { get; set; }
-		public BorrowedBookList list;
 		public User(string name, int birthDate, string email)
 		{
 			Name = name;
@@ -40,11 +36,11 @@ namespace Library.BackEnd
 			Email = email;
 			list = new BorrowedBookList();
 		}	
-		public void TakeBook(Book book)
+		public virtual void TakeBook(Book book)
 		{
 			list.AddBook(book);
 		}
-		public Book ReturnBook(string title)
+		public virtual Book ReturnBook(string title)
 		{
 			Book book = list.Find(title); 
 			if(book!=null)
@@ -56,7 +52,7 @@ namespace Library.BackEnd
 		public void PrintToDisplay()
 		{
 			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nВзяті книги:";
-			info += list.RetriveBookNames();
+			info += list.RetrieveBookNames();
 			Console.WriteLine(info);
 		}
 	}
