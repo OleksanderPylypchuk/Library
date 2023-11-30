@@ -15,7 +15,7 @@ namespace Library.BackEnd
 		Author Author { get; set; }
 		public Book(string title, int date, Author author)
 		{
-			if (date < author.BirthDate||(author.DeathDate!=null&&date>author.DeathDate))
+			if (date < author.BirthDate||(author.DeathDate!=null&&date<author.DeathDate))
 				throw new Exception("Книга написана не автором");
 			Title = title;
 			PublishDate = date;

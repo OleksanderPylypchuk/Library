@@ -41,5 +41,11 @@ namespace Library.BackEnd
 			BooksCount--;
 			return base.ReturnBook(title);
 		}
+		public override void PrintToDisplay()
+		{
+			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nСтатус: Дитина\nВзяті книги:";
+			info += list.RetrieveBookNames();
+			Console.WriteLine(info);
+		}
 	}
 }

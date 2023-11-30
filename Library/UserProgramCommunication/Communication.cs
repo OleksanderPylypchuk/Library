@@ -13,7 +13,7 @@ namespace Library.UserProgramCommunication
 		public BookList library;
 		public List<User> users;
 		public List<Author> authors;
-		public User currentuser=null;
+		public User currentuser;
 		public Communication()
 		{
 			library = new BookLibrary();
@@ -78,6 +78,7 @@ namespace Library.UserProgramCommunication
 		{
 			try
 			{
+				int temp=library.books.Count;
 				Console.WriteLine("Введіть назву книги");
 				string title = Console.ReadLine();
 				Console.WriteLine("Введіть дату написання");
@@ -85,18 +86,27 @@ namespace Library.UserProgramCommunication
 				Console.WriteLine("Виберіть автора за індексом"); int i = 0;
 				foreach (Author author in authors)
 				{
-					Console.WriteLine(i + " - " + author.Name);
-					i++;
+					if(author.BirthDate<date && (author.DeathDate != null && author.DeathDate >= date) || (author.DeathDate == null))
+					{
+						Console.WriteLine(i + " - " + author.Name);
+						i++;
+					}
 				}
+				if (i == 0)
+					throw new Exception("Немає доступних авторів");
 				i = int.Parse(Console.ReadLine());
+				if (i>=authors.Count)
+					throw new Exception("Немає такого автора");
 				Book book = new Book(title, date, authors[i]);
 				library.AddBook(book);
+				if (temp==library.books.Count)
+					throw new Exception("Книгу не додано");	
 				Console.WriteLine("Створено книгу!");
 				ReturnToOptions();
 			}
 			catch(Exception e)
 			{
-				ReturnToOptions();
+				ReturnToOptions(e);
 			}
 		}
 		public void AddBook(int i)
@@ -106,6 +116,8 @@ namespace Library.UserProgramCommunication
 				Console.WriteLine("Введіть назву книги");
 				string title = Console.ReadLine();
 				Book bookToClone = library.Find(title);
+				if (bookToClone == null) 
+					throw new Exception("Немає такої книги");
 				Book bookToAdd = (Book)bookToClone.Clone();
 				library.AddBook(bookToAdd);
 				Console.WriteLine("Клоновано книгу!");
@@ -113,7 +125,7 @@ namespace Library.UserProgramCommunication
 			}
 			catch (Exception e)
 			{
-				ReturnToOptions();
+				ReturnToOptions(e);
 			}
 		}
 		public void TrashBook()
@@ -154,7 +166,7 @@ namespace Library.UserProgramCommunication
 						int deathdate = int.Parse(Console.ReadLine());
 						author = new Author(name, birthdate, deathdate);
 						authors.Add(author);
-						Console.WriteLine();
+						Console.WriteLine("Додано автора!");
 						break;
 					case "2":
 						author = new Author(name, birthdate);
@@ -185,7 +197,7 @@ namespace Library.UserProgramCommunication
 						int birthdate = int.Parse(Console.ReadLine());
 						Console.WriteLine("Введіть email адресу");
 						string email = Console.ReadLine();
-						if (birthdate > 2010)
+						if (birthdate >= 2010)
 							users.Add(new YoungUser(name, birthdate, email));
 						else users.Add(new User(name, birthdate, email));
 						Console.WriteLine("Створено користувача!");
@@ -196,12 +208,17 @@ namespace Library.UserProgramCommunication
 						foreach (User user in users)
 						{
 							Console.WriteLine(i + " - " + user.Name);
+							i++;
 						}
 						i = int.Parse(Console.ReadLine());
+						if (i >= users.Count || users[i] == null)
+							throw new Exception("Немає такого користувача");
 						currentuser = users[i];
 						Console.WriteLine($"Обрано користувача {currentuser.Name}");
 						break;
 					case "3":
+						if (currentuser==null)
+							throw new Exception("Не обрано користувача");
 						CurrentUserOperation();
 						break;
 					default:
@@ -223,6 +240,8 @@ namespace Library.UserProgramCommunication
 				switch (Console.ReadLine())
 				{
 					case "1":
+						if(currentuser==null)
+							throw new Exception("Немає такого користувача");
 						Console.WriteLine("Введіть назву книги");
 						title = Console.ReadLine();
 						Book book = library.Find(title);

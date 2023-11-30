@@ -49,9 +49,9 @@ namespace Library.BackEnd
 			}
 			return book;
 		}
-		public void PrintToDisplay()
+		public virtual void PrintToDisplay()
 		{
-			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nВзяті книги:";
+			string info = $"			Інформація про користувача\nІм'я: {Name}\nДата народження: {BirthDate}\nКонтактна інформація: {Email}\nСтатус: Дорослий\nВзяті книги:";
 			info += list.RetrieveBookNames();
 			Console.WriteLine(info);
 		}
