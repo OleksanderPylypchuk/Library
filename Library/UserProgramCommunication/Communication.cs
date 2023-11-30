@@ -86,7 +86,7 @@ namespace Library.UserProgramCommunication
 				Console.WriteLine("Виберіть автора за індексом"); int i = 0;
 				foreach (Author author in authors)
 				{
-					if(author.BirthDate<date && (author.DeathDate != null && author.DeathDate >= date) || (author.DeathDate == null))
+					if(author.BirthDate<date && ((author.DeathDate != null && author.DeathDate >= date) || (author.DeathDate == null)))
 					{
 						Console.WriteLine(i + " - " + author.Name);
 						i++;
