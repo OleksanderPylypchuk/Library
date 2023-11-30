@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.BackEnd;
-using Library.BackEnd.Abstract;
+using Library.BackEnd.Interfaces;
 
 namespace Library.UserProgramCommunication
 {
-	public class Communication
+    public class Communication
 	{
-		public BookList library;
+		public BookLibrary library;
 		public List<User> users;
 		public List<Author> authors;
 		public User currentuser;
@@ -78,7 +78,7 @@ namespace Library.UserProgramCommunication
 		{
 			try
 			{
-				int temp=library.books.Count;
+				int temp= library.GetCount();
 				Console.WriteLine("Введіть назву книги");
 				string title = Console.ReadLine();
 				Console.WriteLine("Введіть дату написання");
@@ -99,7 +99,7 @@ namespace Library.UserProgramCommunication
 					throw new Exception("Немає такого автора");
 				Book book = new Book(title, date, authors[i]);
 				library.AddBook(book);
-				if (temp==library.books.Count)
+				if (temp==library.GetCount())
 					throw new Exception("Книгу не додано");	
 				Console.WriteLine("Створено книгу!");
 				ReturnToOptions();
