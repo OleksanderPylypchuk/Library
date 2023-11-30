@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Library.BackEnd.Abstract.BookList" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAACCAAAAAAAAIAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>BackEnd\Abstract\Booklist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.BackEnd.Author" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAIAAAAAAAAAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
+      <FileName>BackEnd\Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.BackEnd.Book" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAAiAAAAAAAAAAAAAAAAAAQAAAAABA=</HashCode>
+      <FileName>BackEnd\Book.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Library.BackEnd.BorrowedBookList" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BackEnd\BorrowedBookList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.BackEnd.BookLibrary" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BackEnd\Library.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.BackEnd.User" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIhAAACAYAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAE=</HashCode>
+      <FileName>BackEnd\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Library.BackEnd.YoungUser" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAQAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>BackEnd\YoungUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.UserProgramCommunication.Communication" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEEAAAAAAKAAAAADAAAAAAAAAAAAABYBAAIABQAAA=</HashCode>
+      <FileName>UserProgramCommunication\Communication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.Program" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>UserProgramCommunication\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Library.BackEnd.Interfaces.IPrintable" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>BackEnd\Interfaces\IPrintable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

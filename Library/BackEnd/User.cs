@@ -8,14 +8,14 @@ using Library.BackEnd.Interfaces;
 
 namespace Library.BackEnd
 {
-	public class User : IPeople, IPrintable
+	public class User : People, IPrintable
 	{
 		private string _name;
 		private string _email;
 		private int _birthDate;
 		public string Email { get; set; }
 		public BorrowedBookList list;
-		public string Name { get { return _name; }
+		public override string Name { get { return _name; }
 			set
 			{
 				if (string.IsNullOrEmpty(value) || (value.Length < 3 || value.Length > 20))
@@ -23,7 +23,7 @@ namespace Library.BackEnd
 				_name = value;
 			}
 		}
-		public virtual int BirthDate { get => _birthDate;
+		public override int BirthDate { get => _birthDate;
 			set
 			{
 				_birthDate = value;

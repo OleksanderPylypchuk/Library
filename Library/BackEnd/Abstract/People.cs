@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library.BackEnd.Interfaces
 {
-    public interface IPeople
+    public abstract class People
     {
-        string Name { get; set; }
-        int BirthDate {  get; set; }
+        public virtual string Name { get; set; }
+		public virtual int BirthDate {  get; set; }
     }
 }
