@@ -25,11 +25,7 @@ namespace Library.BackEnd
 
 		public Book Find(string title)
 		{
-			foreach (Book book in books)
-			{
-				if (book.Title == title) return book;
-			}
-			return null;
+			return books.FirstOrDefault(u=>u.Title == title);
 		}
 
 		public bool RemoveBook(Book book)

@@ -8,7 +8,7 @@ namespace Library
 		public static void Main()
 		{
 			Console.OutputEncoding = Encoding.UTF8;
-			new Communication().Options();
+			new Communication();
 		}
 	}
 }

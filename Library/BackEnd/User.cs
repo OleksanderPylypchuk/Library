@@ -15,6 +15,7 @@ namespace Library.BackEnd
 		private int _birthDate;
 		public string Email { get; set; }
 		public BorrowedBookList list;
+
 		public override string Name { get { return _name; }
 			set
 			{
